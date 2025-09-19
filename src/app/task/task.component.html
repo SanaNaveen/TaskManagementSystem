@@ -1,0 +1,22 @@
+@if (isAddingNewJob) {
+    <app-new-job (isCancelTask)="onCancelNewTask($event)" (addJob)="onAddNewJob($event)"></app-new-job>
+}
+
+<section class="task">
+
+    <header>
+        <h2>{{userDetail.name}}</h2>
+        <menu>
+            <button (click)="onAddingNewTask()">Add Task</button>
+        </menu>
+    </header>
+
+    <ul>
+        @for (taskDetail of selectedUserTask; track taskDetail.id) {
+            <li>
+                <app-job [taskDetail]="taskDetail" (completedTask)="onCompletedTask($event)"></app-job>
+            </li>
+        }
+    </ul>
+
+</section>
